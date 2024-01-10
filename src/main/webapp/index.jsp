@@ -1,12 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>JSP - Hello World</title>
-</head>
-<body>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:pageTemplate pageTitle="Library">
+
+    <div class="wrapper">
+    <div class="center">
+    <h1>Welcome To RAVS</h1>
+    <h2>Book Borrowing</h2>
+    <button class="btn2">Subscribe Us</button>
+    </div>
+    </div>
+    </div>
+
+</t:pageTemplate>
