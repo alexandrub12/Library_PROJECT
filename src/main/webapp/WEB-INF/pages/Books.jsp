@@ -3,15 +3,28 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:pageTemplate pageTitle="Books">
-    <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
+
+
     <h1>Books</h1>
     <div class="container text-center">
-        <c:forEach var="books" items="${books}">
+
+        <c:forEach var="book" items="${books}">
             <div class="row">
+
                 <div class="col">
-                        ${books}
+                        ${book.bookName}
                 </div>
+                <div class="col">
+                        ${book.nrPagini}
+                </div>
+                <div class="col">
+                        ${book.autor.numeAutor} ${book.autor.prenumeAutor}
+                </div>
+
             </div>
         </c:forEach>
+
+
     </div>
+
 </t:pageTemplate>

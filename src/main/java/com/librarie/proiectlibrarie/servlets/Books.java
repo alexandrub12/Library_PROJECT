@@ -18,10 +18,9 @@ public class Books extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse
             response) throws ServletException, IOException {
-        request.setAttribute("numberOfFreeParkingSpots", 10);
         List<BookDto> books=bookBean.findAllBooks();
         request.setAttribute("books",books);
-        request.getRequestDispatcher("webapp/Books.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/pages/Books.jsp").forward(request,response);
     }
 
     @Override
