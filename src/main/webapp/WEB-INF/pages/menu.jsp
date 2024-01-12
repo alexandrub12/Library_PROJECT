@@ -7,6 +7,7 @@
             <li><a href="SignUp.jsp">Sign up</a></li>
             <li><a href="Books">Books</a></li>
             <li><a href="Users">Users</a></li>
+            <li><a href="Autori">Autori</a></li>
         </ul>
     </nav>
 </header>
