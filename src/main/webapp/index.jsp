@@ -10,6 +10,5 @@
     <button class="btn2">Subscribe Us</button>
     </div>
     </div>
-    </div>
 
 </t:pageTemplate>
