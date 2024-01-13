@@ -1,5 +1,4 @@
 package com.librarie.proiectlibrarie.servlets;
-
 import com.librarie.proiectlibrarie.common.AutorDto;
 import com.librarie.proiectlibrarie.ejb.AutorBean;
 import jakarta.inject.Inject;
@@ -10,36 +9,36 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-@WebServlet(name = "Autori", value = "/Autori")
-public class Autori extends HttpServlet {
+@WebServlet(name = "EditAutor", value = "/EditAutor")
+public class EditAutor extends HttpServlet {
 
     @Inject
     AutorBean autorBean;
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse
             response) throws ServletException, IOException {
 
-        List<AutorDto> autori=autorBean.findAllAutors();
-        request.setAttribute("autori",autori);
-        request.getRequestDispatcher("WEB-INF/pages/autori.jsp").forward(request,response);
+        Long autorId=Long.parseLong(request.getParameter("id"));
+        AutorDto autor=autorBean.findById(autorId);
+        request.setAttribute("autor", autor);
+
+        request.getRequestDispatcher("WEB-INF/pages/editAutor.jsp").forward(request,response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
 
-        String[] autorIdsAsString =request.getParameterValues("autor_ids");
-        if(autorIdsAsString !=null){
-            List<Long> autorIds =new ArrayList<>();
-            for(String autorIdAsString : autorIdsAsString){
-                autorIds.add(Long.parseLong(autorIdAsString));
-            }
-            autorBean.deleteAutorsByIds(autorIds);
-        }
-        response.sendRedirect(request.getContextPath() + "/Autori");
+        String numeAutor = request.getParameter("nume_autor");
+        String prenumeAutor = request.getParameter("prenume_autor");
+        Long autorId = Long.parseLong(request.getParameter("autor_id"));
+
+        autorBean.updatedAutor(autorId,numeAutor,prenumeAutor);
+        response.sendRedirect(request.getContextPath()+"/Autori");
+
     }
 }

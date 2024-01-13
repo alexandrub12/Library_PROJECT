@@ -4,25 +4,32 @@
 
 <t:pageTemplate pageTitle="Autori">
 
-
     <h1>Autori</h1>
 
-    <div class="container text-center">
+    <form method="POST" action="${pageContext.request.contextPath}/Autori">
+        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddAutor">Add Autor</a>
+        <button class="btn btn-danger" type="submit">Delete Autor</button>
 
-        <c:forEach var="autor" items="${autori}">
-            <div class="row">
+        <div class="container text-center">
 
-                <div class="col">
-                        ${autor.numeAutor}
+            <c:forEach var="autor" items="${autori}">
+                <div class="row">
+                    <div class="col">
+                        <input type="checkbox" name="autor_ids" value="${autor.id}"/>
+                    </div>
+                    <div class="col">
+                            ${autor.numeAutor}
+                    </div>
+                    <div class="col">
+                            ${autor.prenumeAutor}
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditAutor?id=${autor.id}">Edit
+                            Autor</a>
+                    </div>
                 </div>
-                <div class="col">
-                        ${autor.prenumeAutor}
-                </div>
+            </c:forEach>
 
-            </div>
-        </c:forEach>
-
-
-    </div>
-
+        </div>
+    </form>
 </t:pageTemplate>

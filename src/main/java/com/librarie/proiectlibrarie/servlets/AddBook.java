@@ -1,7 +1,6 @@
 package com.librarie.proiectlibrarie.servlets;
 
 import com.librarie.proiectlibrarie.common.AutorDto;
-import com.librarie.proiectlibrarie.common.BookDto;
 import com.librarie.proiectlibrarie.ejb.AutorBean;
 import com.librarie.proiectlibrarie.ejb.BookBean;
 import jakarta.inject.Inject;

@@ -30,8 +30,8 @@ public class EditBook extends HttpServlet {
         List<AutorDto> autori=autorBean.findAllAutors();
         request.setAttribute("autori",autori);
 
-        Long carId=Long.parseLong(request.getParameter("id"));
-        BookDto book=bookBean.findById(carId);
+        Long bookId=Long.parseLong(request.getParameter("id"));
+        BookDto book=bookBean.findById(bookId);
         request.setAttribute("book", book);
 
         request.getRequestDispatcher("WEB-INF/pages/editBook.jsp").forward(request,response);
