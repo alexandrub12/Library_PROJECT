@@ -9,19 +9,26 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="nume_autor">Nume Autor</label>
-                <input type="text" class="form-control" id="nume_autor" name="nume_autor" placeholder="" value="${autor.numeAutor}" required>
+                <input type="text" class="form-control" id="nume_autor" name="nume_autor" placeholder=""
+                       value="${autor.numeAutor}" required>
                 <div class="invalid-feedback">
                     Nume Autor is required.
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
                 <label for="prenume_autor">Prenume Autor</label>
-                <input type="text" class="form-control" id="prenume_autor" name="prenume_autor" placeholder="" value="${autor.prenumeAutor}" required>
+                <input type="text" class="form-control" id="prenume_autor" name="prenume_autor" placeholder=""
+                       value="${autor.prenumeAutor}" required>
                 <div class="invalid-feedback">
                     Prenume Autor is required.
                 </div>
-                <button class="btn btn-primary btn-lg" type="submit" >Save</button>
             </div>
-            <input type="hidden" name="autor_id" value="${autor.id}" />
+            <input type="hidden" name="autor_id" value="${autor.id}"/>
         </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg" type="submit" >Save</button>
     </form>
 
 </t:pageTemplate>
