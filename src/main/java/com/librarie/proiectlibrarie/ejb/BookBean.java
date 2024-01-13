@@ -57,4 +57,52 @@ public class BookBean {
         return bookDtos;
     }
 
+    public void createBook(String bookName, String pagesNumber, Long autorId) {
+
+        LOG.info("createBook");
+
+        Book book = new Book();
+        book.setBookName(bookName);
+        book.setNrPagini(Integer.parseInt(pagesNumber));
+
+        Autor autor = entityManager.find(Autor.class,autorId);
+        autor.getBooks().add(book);
+        book.setAutor(autor);
+
+        entityManager.persist(book);
+    }
+
+    public BookDto findById(Long id){
+
+        Book book = entityManager.find(Book.class, id);
+        return new BookDto(id, book.getBookName(), book.getNrPagini(), book.getImprumuturi(),book.getAutor());
+    }
+
+    public void updatedBook(Long bookId, String bookName, String pagesNumber, Long autorId) {
+
+        LOG.info("updateBook");
+
+        Book book = entityManager.find(Book.class, bookId);
+        book.setBookName(bookName);
+        book.setNrPagini(Integer.parseInt(pagesNumber));
+
+        Autor oldAutor=book.getAutor();
+        oldAutor.getBooks().remove(book);
+
+        Autor autor = entityManager.find(Autor.class,autorId);
+        autor.getBooks().add(book);
+        book.setAutor(autor);
+
+    }
+
+    public void deleteBooksByIds(List<Long> bookIds) {
+
+        LOG.info("deleteBooksByIds");
+
+        for (Long bookId : bookIds) {
+            Book car= entityManager.find(Book.class, bookId);
+            entityManager.remove(car);
+        }
+    }
+
 }

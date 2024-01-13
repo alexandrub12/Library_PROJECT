@@ -6,25 +6,38 @@
 
 
     <h1>Books</h1>
-    <div class="container text-center">
+    <form method="POST" action="${pageContext.request.contextPath}/Books">
+        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddBook">Add Book</a>
+        <button class="btn btn-danger" type="submit">Delete Books</button>
+        <div class="container text-center">
 
-        <c:forEach var="book" items="${books}">
-            <div class="row">
+            <c:forEach var="book" items="${books}">
+                <div class="row">
 
-                <div class="col">
-                        ${book.bookName}
+                    <div class="col">
+                        <input type="checkbox" name="book_ids" value="${book.id}"/>
+                    </div>
+
+                    <div class="col">
+                            ${book.bookName}
+                    </div>
+
+                    <div class="col">
+                            ${book.nrPagini}
+                    </div>
+
+                    <div class="col">
+                            ${book.autor.numeAutor} ${book.autor.prenumeAutor}
+                    </div>
+
+                    <div class="col">
+                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditBook?id=${book.id}">Edit
+                            Book</a>
+                    </div>
+
                 </div>
-                <div class="col">
-                        ${book.nrPagini}
-                </div>
-                <div class="col">
-                        ${book.autor.numeAutor} ${book.autor.prenumeAutor}
-                </div>
+            </c:forEach>
 
-            </div>
-        </c:forEach>
-
-
-    </div>
-
+        </div>
+    </form>
 </t:pageTemplate>
