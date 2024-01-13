@@ -1,13 +1,29 @@
 <header>
-    <nav class="navbar">
-        <img class="logo" src="css/logo.png">
-        <ul>
-            <li><a class="active" href="index.jsp">Home</a></li>
-            <li><a href="LogIn.jsp">Log in</a></li>
-            <li><a href="SignUp.jsp">Sign up</a></li>
-            <li><a href="Books">Books</a></li>
-            <li><a href="Users">Users</a></li>
-            <li><a href="Autori">Autori</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}">Home</a>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Books">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Users">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/Autori">Autori</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/LogIn.jsp">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/SignUp.jsp">Sign up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 </header>
