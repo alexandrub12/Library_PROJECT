@@ -28,6 +28,15 @@
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
+                <label for="cantitate">Books Count</label>
+                <input type="text" class="form-control" id="cantitate" name="cantitate" placeholder="" value="${book.cantitate}" required>
+                <div class="invalid-feedback">
+                    Books Count is required.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
                 <label for="autor_id">Autors</label>
                 <select class="custom-select d-block w-100" id="autor_id" name="autor_id" required>
                     <option value="">Choose...</option>

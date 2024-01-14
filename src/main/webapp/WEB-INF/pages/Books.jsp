@@ -30,6 +30,9 @@
                     <div class="col">
                             ${book.autor.numeAutor} ${book.autor.prenumeAutor}
                     </div>
+                    <div class="col">
+                            ${book.cantitate}
+                    </div>
                     <c:if test="${pageContext.request.isUserInRole('WRITE_BOOKS')}">
                         <div class="col">
                             <a class="btn btn-secondary"

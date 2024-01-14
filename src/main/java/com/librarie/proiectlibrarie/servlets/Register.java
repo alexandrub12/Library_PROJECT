@@ -32,7 +32,7 @@ public class Register extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String[] userGroups = new String[] {"READ_BOOKS", "READ_AUTORS"};
+        String[] userGroups = new String[] {"READ_BOOKS", "READ_AUTORS","READ_IMPRUMUTARI","WRITE_IMPRUMUTARI"};
 
 
         userBean.createUser(username, email, password, Arrays.asList(userGroups));

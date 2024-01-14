@@ -29,7 +29,7 @@ public class AddUser extends HttpServlet {
             response) throws ServletException, IOException {
 
         request.setAttribute("userGroups", new String[] {"READ_BOOKS", "WRITE_BOOKS", "READ_USERS",
-                "WRITE_USERS","READ_AUTORS", "WRITE_AUTORS"});
+                "WRITE_USERS","READ_AUTORS", "WRITE_AUTORS","READ_IMPRUMUTURI","WRITE_IMPRUMUTURI","DELETE_IMPRUMUTURI"});
         request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
     }
 

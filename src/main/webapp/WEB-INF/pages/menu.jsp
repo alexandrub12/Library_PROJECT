@@ -22,6 +22,11 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/Autori">Autori</a>
                         </c:if>
                     </li>
+                    <li class="nav-item">
+                        <c:if test="${pageContext.request.isUserInRole('READ_IMPRUMUTARI')}">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/Imprumutari">Imprumutari</a>
+                        </c:if>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
