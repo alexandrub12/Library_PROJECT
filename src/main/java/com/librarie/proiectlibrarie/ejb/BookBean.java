@@ -1,8 +1,10 @@
 package com.librarie.proiectlibrarie.ejb;
 
 import com.librarie.proiectlibrarie.common.BookDto;
+import com.librarie.proiectlibrarie.common.BookPhotoDto;
 import com.librarie.proiectlibrarie.entities.Autor;
 import com.librarie.proiectlibrarie.entities.Book;
+import com.librarie.proiectlibrarie.entities.BookPhoto;
 import com.librarie.proiectlibrarie.entities.Imprumutare;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -106,6 +108,33 @@ public class BookBean {
             Book car= entityManager.find(Book.class, bookId);
             entityManager.remove(car);
         }
+    }
+
+    public void addPhotoToBook(Long bookId, String filename, String fileType, byte[] fileContent) {
+        LOG.info("addPhotoToBook");
+        BookPhoto photo = new BookPhoto();
+        photo.setFilename(filename);
+        photo.setFileType(fileType);
+        photo.setFileContent(fileContent);
+        Book book = entityManager.find(Book.class, bookId);
+        if (book.getPhoto() != null) {
+            entityManager.remove(book.getPhoto());
+        }
+        book.setPhoto(photo);
+        photo.setBook(book);
+        entityManager.persist(photo);
+    }
+    public BookPhotoDto findPhotoByBookId(Integer bookId) {
+        List<BookPhoto> photos = entityManager
+                .createQuery("SELECT p FROM BookPhoto p where p.book.id = :id", BookPhoto.class)
+                .setParameter("id", bookId)
+                .getResultList();
+        if (photos.isEmpty()) {
+            return null;
+        }
+        BookPhoto photo = photos.get(0); // the first element
+        return new BookPhotoDto(photo.getId(), photo.getFilename(), photo.getFileType(),
+                photo.getFileContent());
     }
 
 }

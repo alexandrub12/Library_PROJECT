@@ -73,8 +73,16 @@ public class Book {
         this.cantitate = cantitate;
     }
 
+    private BookPhoto photo;
 
+    @OneToOne(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public BookPhoto getPhoto() {
+        return photo;
+    }
 
+    public void setPhoto(BookPhoto photo) {
+        this.photo = photo;
+    }
 }
 
 
