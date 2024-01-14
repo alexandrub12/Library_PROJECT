@@ -46,10 +46,12 @@ public class EditBook extends HttpServlet {
 
         String bookName = request.getParameter("book_name");
         String pagesNumber = request.getParameter("pages_number");
+        int cantitate = Integer.parseInt(request.getParameter("cantitate"));
         Long autorId = Long.parseLong(request.getParameter("autor_id"));
         Long bookId = Long.parseLong(request.getParameter("book_id"));
 
-        bookBean.updatedBook(bookId,bookName,pagesNumber,autorId);
+
+        bookBean.updatedBook(bookId,bookName,pagesNumber,autorId,cantitate);
         response.sendRedirect(request.getContextPath()+"/Books");
 
     }

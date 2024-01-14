@@ -2,6 +2,8 @@ package com.librarie.proiectlibrarie.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Imprumutare {
     @Id
@@ -16,13 +18,32 @@ public class Imprumutare {
         return id;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "book_id")
     private Book book;
+
+    private Date dataImprumut;
+    private Date dataReturnareMaxima;
+
+    public Date getDataImprumut() {
+        return dataImprumut;
+    }
+
+    public void setDataImprumut(Date dataImprumut) {
+        this.dataImprumut = dataImprumut;
+    }
+
+    public Date getDataReturnareMaxima() {
+        return dataReturnareMaxima;
+    }
+
+    public void setDataReturnareMaxima(Date dataReturnareMaxima) {
+        this.dataReturnareMaxima = dataReturnareMaxima;
+    }
 
     public User getUser() {
         return user;

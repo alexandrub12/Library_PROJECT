@@ -43,6 +43,24 @@ public class UserBean {
         }
     }
 
+    public UserDto findUserByUsername(String username)
+    {
+        try
+        {
+            TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u where u.username=:username",User.class);
+            typedQuery.setParameter("username", username);
+
+
+            User user = typedQuery.getSingleResult();
+            return new UserDto(user.getId(),user.getUsername(),user.getEmail(),user.getPassword(),user.getImprumuturi());
+        }
+        catch (Exception ex)
+        {
+            throw new EJBException(ex);
+        }
+    }
+
+
     public void createUser(String username, String email, String password, Collection<String> groups) {
         LOG.info("createUser");
         User newUser = new User();

@@ -1,6 +1,5 @@
 package com.librarie.proiectlibrarie.ejb;
 
-import com.librarie.proiectlibrarie.servlets.Books;
 import com.librarie.proiectlibrarie.common.BookDto;
 import com.librarie.proiectlibrarie.entities.Autor;
 import com.librarie.proiectlibrarie.entities.Book;
@@ -50,20 +49,22 @@ public class BookBean {
                     book.getBookName(),
                     book.getNrPagini(),
                     imprumuturi,
-                    autor
+                    autor,
+                    book.getCantitate()
             );
             bookDtos.add(bookDto);
         }
         return bookDtos;
     }
 
-    public void createBook(String bookName, String pagesNumber, Long autorId) {
+    public void createBook(String bookName, String pagesNumber, Long autorId,int cantitate) {
 
         LOG.info("createBook");
 
         Book book = new Book();
         book.setBookName(bookName);
         book.setNrPagini(Integer.parseInt(pagesNumber));
+        book.setCantitate(cantitate);
 
         Autor autor = entityManager.find(Autor.class,autorId);
         autor.getBooks().add(book);
@@ -75,16 +76,17 @@ public class BookBean {
     public BookDto findById(Long id){
 
         Book book = entityManager.find(Book.class, id);
-        return new BookDto(id, book.getBookName(), book.getNrPagini(), book.getImprumuturi(),book.getAutor());
+        return new BookDto(id, book.getBookName(), book.getNrPagini(), book.getImprumuturi(),book.getAutor(),book.getCantitate());
     }
 
-    public void updatedBook(Long bookId, String bookName, String pagesNumber, Long autorId) {
+    public void updatedBook(Long bookId, String bookName, String pagesNumber, Long autorId,int cantitate) {
 
         LOG.info("updateBook");
 
         Book book = entityManager.find(Book.class, bookId);
         book.setBookName(bookName);
         book.setNrPagini(Integer.parseInt(pagesNumber));
+        book.setCantitate(cantitate);
 
         Autor oldAutor=book.getAutor();
         oldAutor.getBooks().remove(book);
@@ -92,6 +94,7 @@ public class BookBean {
         Autor autor = entityManager.find(Autor.class,autorId);
         autor.getBooks().add(book);
         book.setAutor(autor);
+
 
     }
 

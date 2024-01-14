@@ -62,4 +62,19 @@ public class Book {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+    private int cantitate;
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public void setCantitate(int cantitate) {
+        this.cantitate = cantitate;
+    }
+
+
+
 }
+
+

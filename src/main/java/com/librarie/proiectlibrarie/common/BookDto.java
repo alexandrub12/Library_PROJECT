@@ -12,13 +12,15 @@ public class BookDto {
     private int nrPagini;
     private List<Imprumutare> imprumuturi;
     private Autor autor;
+    private int cantitate;
 
-    public BookDto(Long id, String bookName, int nrPagini, List<Imprumutare> imprumuturi, Autor autor) {
+    public BookDto(Long id, String bookName, int nrPagini, List<Imprumutare> imprumuturi, Autor autor,int cantitate) {
         this.id = id;
         this.bookName = bookName;
         this.nrPagini = nrPagini;
         this.imprumuturi = imprumuturi;
         this.autor = autor;
+        this.cantitate = cantitate;
     }
 
     public Long getId() {
@@ -60,4 +62,15 @@ public class BookDto {
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public void setCantitate(int cantitate) {
+        this.cantitate = cantitate;
+    }
+
+
 }

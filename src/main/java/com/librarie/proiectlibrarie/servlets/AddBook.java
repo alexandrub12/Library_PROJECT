@@ -39,9 +39,10 @@ public class AddBook extends HttpServlet {
 
         String bookName = request.getParameter("book_name");
         String pagesNumber = request.getParameter("pages_number");
+        int cantitate = Integer.parseInt(request.getParameter("cantitate"));
         Long autorId = Long.parseLong(request.getParameter("autor_id"));
 
-        bookBean.createBook(bookName,pagesNumber,autorId);
+        bookBean.createBook(bookName,pagesNumber,autorId,cantitate);
         response.sendRedirect(request.getContextPath()+"/Books");
     }
 }
