@@ -13,7 +13,21 @@
         </c:if>
 
         <div class="container text-center">
+            <div class="row">
+                <div class="col">
 
+                </div>
+                <div class="col">
+                    <b>Prenume</b>
+                </div>
+                <div class="col">
+                    <b>Nume</b>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <br>
             <c:forEach var="autor" items="${autori}">
                 <div class="row">
                     <c:if test="${pageContext.request.isUserInRole('WRITE_AUTORS')}">

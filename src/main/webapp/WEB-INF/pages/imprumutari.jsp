@@ -17,6 +17,28 @@
 
 
         <div class="container text-center">
+            <br>
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col">
+                    <b>Titlul Cartii</b>
+                </div>
+                <div class="col">
+                    <b>Nume Autor</b>
+                </div>
+                <div class="col">
+                    <b>Data Imprumutare</b>
+                </div>
+                <div class="col">
+                    <b>Data Returnare</b>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <br>
             <c:forEach var="imprumutare" items="${imprumutari}">
                 <div class="row">
 

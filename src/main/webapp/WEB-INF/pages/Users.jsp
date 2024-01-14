@@ -11,7 +11,27 @@
     </c:if>
 
     <div class="container text-center">
+        <div class="row">
+            <div class="col">
 
+            </div>
+            <div class="col">
+                <b>Username</b>
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <b>Email</b>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <br>
         <c:forEach var="user" items="${users}">
             <div class="row">
 
