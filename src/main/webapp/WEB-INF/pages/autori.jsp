@@ -13,43 +13,36 @@
         </c:if>
 
         <div class="container text-center">
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col">
-                    <b>Prenume</b>
-                </div>
-                <div class="col">
-                    <b>Nume</b>
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
-            <br>
-            <c:forEach var="autor" items="${autori}">
-                <div class="row">
-                    <c:if test="${pageContext.request.isUserInRole('WRITE_AUTORS')}">
-                        <div class="col">
-                            <input type="checkbox" name="autor_ids" value="${autor.id}"/>
-                        </div>
-                    </c:if>
-                    <div class="col">
-                            ${autor.numeAutor}
-                    </div>
-                    <div class="col">
-                            ${autor.prenumeAutor}
-                    </div>
-                    <c:if test="${pageContext.request.isUserInRole('WRITE_AUTORS')}">
-                        <div class="col">
-                            <a class="btn btn-secondary"
-                               href="${pageContext.request.contextPath}/EditAutor?id=${autor.id}">Edit Autor</a>
-                        </div>
-                    </c:if>
-                </div>
-            </c:forEach>
-
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Prenume</th>
+                    <th scope="col">Nume</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="autor" items="${autori}">
+                    <tr>
+                        <td>
+                            <c:if test="${pageContext.request.isUserInRole('WRITE_AUTORS')}">
+                                <input type="checkbox" name="autor_ids" value="${autor.id}" />
+                            </c:if>
+                        </td>
+                        <td>${autor.prenumeAutor}</td>
+                        <td>${autor.numeAutor}</td>
+                        <td>
+                            <c:if test="${pageContext.request.isUserInRole('WRITE_AUTORS')}">
+                                <a class="btn btn-secondary"
+                                   href="${pageContext.request.contextPath}/EditAutor?id=${autor.id}">Edit Autor</a>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
+
     </form>
 </t:pageTemplate>

@@ -24,13 +24,13 @@
                         <img src="${pageContext.request.contextPath}/BookPhotos?id=${book.id}" width="100"/>
                     </div>
                     <div class="col">
-                            Nume carte: ${book.bookName}
+                            <b>Nume carte</b>: ${book.bookName}
                         <br>
-                            Nume autor: ${book.autor.numeAutor} ${book.autor.prenumeAutor}
+                            <b>Nume autor</b>: ${book.autor.numeAutor} ${book.autor.prenumeAutor}
                         <br>
-                            Numar pagini: ${book.nrPagini}
+                            <b>Numar pagini</b>: ${book.nrPagini}
                         <br>
-                            Stoc disponibil: ${book.cantitate}
+                            <b>Stoc disponibil</b>: ${book.cantitate}
                     </div>
                     <c:if test="${pageContext.request.isUserInRole('WRITE_BOOKS')}">
                         <div class="col">
