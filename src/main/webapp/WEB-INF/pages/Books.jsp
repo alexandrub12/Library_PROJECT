@@ -43,6 +43,7 @@
                         </div>
                     </c:if>
                 </div>
+                <br>
             </c:forEach>
         </div>
     </form>
