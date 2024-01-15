@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_IMPRUMUTARI"}))
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"EDIT_IMPRUMUTARI"}))
 @WebServlet(name = "EditImprumutare", value = "/EditImprumutare")
 public class EditImprumutare extends HttpServlet {
 
@@ -52,7 +52,7 @@ public class EditImprumutare extends HttpServlet {
 
         String data_imprumutareString = request.getParameter("data_imprumutare");
         String data_returnareString = request.getParameter("data_returnare");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
         try {

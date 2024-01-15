@@ -18,62 +18,40 @@
 
         <div class="container text-center">
             <br>
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col">
-                    <b>Titlul Cartii</b>
-                </div>
-                <div class="col">
-                    <b>Nume Autor</b>
-                </div>
-                <div class="col">
-                    <b>Data Imprumutare</b>
-                </div>
-                <div class="col">
-                    <b>Data Returnare</b>
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
-            <br>
-            <c:forEach var="imprumutare" items="${imprumutari}">
-                <div class="row">
-
-                    <c:if test="${pageContext.request.isUserInRole('DELETE_IMPRUMUTARI')}">
-                        <div class="col">
-                            <input type="checkbox" name ="imprumutare_ids" value="${imprumutare.id}" />
-                        </div>
-                    </c:if>
-
-
-
-                    <div class="col">
-                            ${imprumutare.book.bookName}
-                    </div>
-                    <div class="col">
-                            ${imprumutare.book.autor.numeAutor} ${imprumutare.book.autor.prenumeAutor}
-                    </div>
-                    <div class="col">
-                            ${imprumutare.dataImprumut}
-                    </div>
-                    <div class="col">
-                            ${imprumutare.dataReturnareMaxima}
-                    </div>
-
-                    <c:if test="${pageContext.request.isUserInRole('WRITE_IMPRUMUTARI')}">
-                        <div class = "col">
-                            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditImprumutare?id=${imprumutare.id}">Edit Imprumutare</a>
-                        </div>
-                    </c:if>
-
-                </div>
-
-            </c:forEach>
-
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Titlul Cartii</th>
+                    <th scope="col">Nume Autor</th>
+                    <th scope="col">Data Imprumutare</th>
+                    <th scope="col">Data Returnare</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="imprumutare" items="${imprumutari}">
+                    <tr>
+                        <td>
+                            <c:if test="${pageContext.request.isUserInRole('DELETE_IMPRUMUTARI')}">
+                                <input type="checkbox" name="imprumutare_ids" value="${imprumutare.id}" />
+                            </c:if>
+                        </td>
+                        <td>${imprumutare.book.bookName}</td>
+                        <td>${imprumutare.book.autor.numeAutor} ${imprumutare.book.autor.prenumeAutor}</td>
+                        <td>${imprumutare.dataImprumut}</td>
+                        <td>${imprumutare.dataReturnareMaxima}</td>
+                        <td>
+                            <c:if test="${pageContext.request.isUserInRole('EDIT_IMPRUMUTARI')}">
+                                <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditImprumutare?id=${imprumutare.id}">Edit Imprumutare</a>
+                            </c:if>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
+
     </form>
 
 </t:pageTemplate>

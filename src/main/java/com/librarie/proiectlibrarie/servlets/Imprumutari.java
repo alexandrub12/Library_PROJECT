@@ -15,7 +15,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-@DeclareRoles({"READ_IMPRUMUTARI", "WRITE_IMPRUMUTARI"})
+@DeclareRoles({"READ_IMPRUMUTARI", "WRITE_IMPRUMUTARI","EDIT_IMPRUMUTARE"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_IMPRUMUTARI"}),
         httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"DELETE_IMPRUMUTARI"})})
 @WebServlet(name = "Imprumutari", value = "/Imprumutari")

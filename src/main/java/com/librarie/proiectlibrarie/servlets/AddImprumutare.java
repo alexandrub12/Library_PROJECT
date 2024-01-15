@@ -61,7 +61,7 @@ public class AddImprumutare extends HttpServlet {
 
         String data_imprumutareString = request.getParameter("data_imprumutare");
         String data_returnareString = request.getParameter("data_returnare");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 
         try {
