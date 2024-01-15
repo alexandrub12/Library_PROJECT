@@ -27,7 +27,7 @@ public class ImprumutareBean {
     EntityManager entityManager;
 
 
-    public List<ImprumutareDto> findAllImprumutariByUserId(long userId)
+    public List<ImprumutareDto> findAllImprumutariForUser(long userId)
     {
         LOG.info("findAllImprumutari");
         try
@@ -44,7 +44,24 @@ public class ImprumutareBean {
         {
             throw new EJBException(ex);
         }
+    }    public List<ImprumutareDto> findAllImprumutariForAdmin(long userId)
+    {
+        LOG.info("findAllImprumutari");
+        try
+        {
+            TypedQuery<Imprumutare> typedQuery = entityManager.createQuery("SELECT i FROM Imprumutare i",Imprumutare.class);
+
+
+
+            List<Imprumutare> imprumutari = typedQuery.getResultList();
+            return copyImprumutariToDto(imprumutari);
+        }
+        catch (Exception ex)
+        {
+            throw new EJBException(ex);
+        }
     }
+
 
     private List<ImprumutareDto> copyImprumutariToDto(List<Imprumutare> imprumutari) {
         List<ImprumutareDto> imprumutareDtos = new ArrayList<>();

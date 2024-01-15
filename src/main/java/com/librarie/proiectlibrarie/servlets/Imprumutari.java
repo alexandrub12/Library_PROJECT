@@ -15,7 +15,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-@DeclareRoles({"READ_IMPRUMUTARI", "WRITE_IMPRUMUTARI","EDIT_IMPRUMUTARE"})
+@DeclareRoles({"READ_IMPRUMUTARI", "WRITE_IMPRUMUTARI","EDIT_IMPRUMUTARE","ADMIN"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_IMPRUMUTARI"}),
         httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"DELETE_IMPRUMUTARI"})})
 @WebServlet(name = "Imprumutari", value = "/Imprumutari")
@@ -42,9 +42,17 @@ public class Imprumutari extends HttpServlet {
             userId=user.getId();
         }
 
-        List<ImprumutareDto> imprumutari=imprumutareBean.findAllImprumutariByUserId(userId);
-        request.setAttribute("imprumutari",imprumutari);
-        request.getRequestDispatcher("WEB-INF/pages/imprumutari.jsp").forward(request,response);
+        List<ImprumutareDto> imprumutari;
+        if(userBean.CheckIfUserContainsGroup(principal.getName(),"ADMIN")) {
+            imprumutari=imprumutareBean.findAllImprumutariForAdmin(userId);
+            request.setAttribute("imprumutari", imprumutari);
+        }
+        else {
+            imprumutari=imprumutareBean.findAllImprumutariForUser(userId);
+            request.setAttribute("imprumutari", imprumutari);
+        }
+        request.getRequestDispatcher("WEB-INF/pages/imprumutari.jsp").forward(request, response);
+
     }
 
     @Override

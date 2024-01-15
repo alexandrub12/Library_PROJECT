@@ -26,6 +26,9 @@
                     <th scope="col">Nume Autor</th>
                     <th scope="col">Data Imprumutare</th>
                     <th scope="col">Data Returnare</th>
+                    <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+                    <th  scope="col">Username</th>
+                    </c:if>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -41,6 +44,9 @@
                         <td>${imprumutare.book.autor.numeAutor} ${imprumutare.book.autor.prenumeAutor}</td>
                         <td>${imprumutare.dataImprumut}</td>
                         <td>${imprumutare.dataReturnareMaxima}</td>
+                        <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+                        <td>${imprumutare.user.username}</td>
+                        </c:if>
                         <td>
                             <c:if test="${pageContext.request.isUserInRole('EDIT_IMPRUMUTARI')}">
                                 <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditImprumutare?id=${imprumutare.id}">Edit Imprumutare</a>

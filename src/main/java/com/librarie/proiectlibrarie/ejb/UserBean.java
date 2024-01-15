@@ -97,4 +97,23 @@ public class UserBean {
         return userDtos;
     }
 
+    public boolean CheckIfUserContainsGroup(String username,String group){
+        try
+        {
+            TypedQuery<UserGroup> typedQuery = entityManager.createQuery("SELECT u FROM UserGroup u where u.username=:username",UserGroup.class).setParameter("username",username);
+            List<UserGroup> usergroups = typedQuery.getResultList();
+            for(UserGroup role:usergroups){
+                if(role.getUserGroup().equals(group)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        catch (Exception ex)
+        {
+            throw new EJBException(ex);
+        }
+
+    }
+
 }
